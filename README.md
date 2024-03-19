@@ -22,6 +22,6 @@ We welcome collaboration and contributions from individuals and organizations in
 
 ## Contact Us
 
-For inquiries and partnership opportunities, please email us at contact@kelight.org.
+For inquiries and partnership opportunities, please email us at chuqiao0727@gmail.com.
 
 Follow us on [Instagram](https://instagram.com/kelight_co) for updates and announcements.
