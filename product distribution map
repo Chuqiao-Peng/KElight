@@ -1,0 +1,161 @@
+<style>
+    #map {
+        height: 600px;
+        width: 970px;
+    }
+    .info-content {
+        font-size: 14px; /* Adjust font size as needed */
+        line-height: 1.5; /* Adjust line height as needed */
+        color: #333; /* Adjust font color as needed */
+    }
+</style>
+<div id="map"></div>
+<script>
+function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 5,
+        center: {lat: 33.669445, lng: -117.823059} // Adjust the initial map center as needed
+    });
+
+var locations = [
+        {lat: 38.4627, lng: 33.7653, content:  `
+                <div class="info-content">
+                    <p>CHARGE: 1%</p>
+                    <p>MAINTENANCE: Due in 6 years</p>
+                    <p>STORED ENERGY: 92%</p>
+                </div>
+            `},
+        {lat: 41.0169, lng: 28.9470, content:  `
+                <div class="info-content">
+                    <p>CHARGE: 2%</p>
+                    <p>MAINTENANCE: Due in 6 years</p>
+                    <p>STORED ENERGY: 92%</p>
+                </div>
+            `},
+        {lat: 37.2303, lng: 32.9589, content:  `
+                <div class="info-content">
+                    <p>CHARGE: 4%</p>
+                    <p>MAINTENANCE: Due in 6 years</p>
+                    <p>STORED ENERGY: 92%</p>
+                </div>
+            `}, // Converted from DMS
+        {lat: 35.0115, lng: 33.4638, content:  `
+                <div class="info-content">
+                    <p>CHARGE: 5%</p>
+                    <p>MAINTENANCE: Due in 6 years</p>
+                    <p>STORED ENERGY: 92%</p>
+                </div>
+            `},
+        {lat: 41.0014, lng: 28.8553, content:  `
+                <div class="info-content">
+                    <p>CHARGE: 6%</p>
+                    <p>MAINTENANCE: Due in 6 years</p>
+                    <p>STORED ENERGY: 92%</p>
+                </div>
+            `},
+        {lat: 41.0328, lng: 28.8910, content:  `
+                <div class="info-content">
+                    <p>CHARGE: 7%</p>
+                    <p>MAINTENANCE: Due in 6 years</p>
+                    <p>STORED ENERGY: 92%</p>
+                </div>
+            `},
+        {lat: 37.0037, lng: 27.2720, content:  `
+                <div class="info-content">
+                    <p>CHARGE: 8%</p>
+                    <p>MAINTENANCE: Due in 6 years</p>
+                    <p>STORED ENERGY: 92%</p>
+                </div>
+            `},
+        {lat: 40.9863, lng: 28.9019, content:  `
+                <div class="info-content">
+                    <p>CHARGE: 9%</p>
+                    <p>MAINTENANCE: Due in 6 years</p>
+                    <p>STORED ENERGY: 92%</p>
+                </div>
+            `},
+        {lat: 39.1170, lng: 30.1326, content:  `
+                <div class="info-content">
+                    <p>CHARGE: 10%</p>
+                    <p>MAINTENANCE: Due in 6 years</p>
+                    <p>STORED ENERGY: 92%</p>
+                </div>
+            `},
+        {lat: 41.0232, lng: 29.0213, content:  `
+                <div class="info-content">
+                    <p>CHARGE: 11%</p>
+                    <p>MAINTENANCE: Due in 6 years</p>
+                    <p>STORED ENERGY: 92%</p>
+                </div>
+            `},
+        {lat: 41.0817, lng: 28.9914, content:  `
+                <div class="info-content">
+                    <p>CHARGE: 12%</p>
+                    <p>MAINTENANCE: Due in 6 years</p>
+                    <p>STORED ENERGY: 92%</p>
+                </div>
+            `},
+        {lat: 34.0488, lng: -118.2518, content:  `
+                <div class="info-content">
+                    <p>CHARGE: 13%</p>
+                    <p>MAINTENANCE: Due in 6 years</p>
+                    <p>STORED ENERGY: 92%</p>
+                </div>
+            `},
+        {lat: 33.8366, lng: -117.9143, content:  `
+                <div class="info-content">
+                    <p>CHARGE: 14%</p>
+                    <p>MAINTENANCE: Due in 6 years</p>
+                    <p>STORED ENERGY: 92%</p>
+                </div>
+            `},
+        {lat: 33.6846, lng: -117.8265, content: `
+                <div class="info-content">
+                    <p>CHARGE: 15%</p>
+                    <p>MAINTENANCE: Due in 6 years</p>
+                    <p>STORED ENERGY: 92%</p>
+                </div>
+            `},
+        {lat: 50.8476, lng: 4.3572, content:  `
+                <div class="info-content">
+                    <p>CHARGE: 16%</p>
+                    <p>MAINTENANCE: Due in 6 years</p>
+                    <p>STORED ENERGY: 92%</p>
+                </div>
+            `},
+        {lat: 51.2213, lng: 4.4051, content:  `
+                <div class="info-content">
+                    <p>CHARGE: 17%</p>
+                    <p>MAINTENANCE: Due in 6 years</p>
+                    <p>STORED ENERGY: 92%</p>
+                </div>
+            `}
+    ];
+
+
+  
+
+    // Define an info window outside the loop to reuse it
+    var infoWindow = new google.maps.InfoWindow();
+
+    locations.forEach(function(location) {
+        var marker = new google.maps.Marker({
+            position: {lat: location.lat, lng: location.lng},
+            map: map
+        });
+
+        marker.addListener('click', function() {
+            // Close the previous info window to ensure only one is open at a time
+            infoWindow.close(); 
+            infoWindow.setContent(location.content);
+            infoWindow.open(map, marker);
+        });
+    });
+
+    // Close the info window when the map is clicked
+    map.addListener('click', function() {
+        infoWindow.close();
+    });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCS8pvWLwtLfqrGYDCRlVwBpZJaDBuyzWo&callback=initMap" async defer></script>
